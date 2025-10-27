@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧾 Final Bill</title>
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: #00ffcc;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #ff66cc;
+      text-shadow: 0 0 15px #ff66cc;
+    }
+    .bill-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 0 20px #00ffcc;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    .item-group {
+      margin-bottom: 20px;
+    }
+    .item-group label {
+      display: block;
+      font-size: 18px;
+      color: #ff66cc;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+    button {
+      background: #ff66cc;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #ff66cc;
+      margin-top: 15px;
+      width: 100%;
+    }
+    button:hover {
+      background: #00ffcc;
+      color: #000;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+    .total {
+      margin-top: 20px;
+      font-size: 22px;
+      color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧾 Final Bill</h1>
+
+  <div class="bill-box">
+    <!-- Cooldrinks -->
+    <div class="item-group">
+      <label>🥤 Cooldrinks</label>
+      <label><input type="checkbox" value="Coke - 50" class="cooldrink">Coke - ₹25</label>
+      <label><input type="checkbox" value="Sprite - 60" class="cooldrink">Sprite - ₹25</label>
+      <label><input type="checkbox" value="Fanta - 80" class="cooldrink">Fanta - ₹25</label>
+      <label><input type="checkbox" value="Thums Up - 100" class="cooldrink">Thums Up - ₹25</label>
+    </div>
+
+    <!-- Food -->
+    <div class="item-group">
+      <label>🍛 Food</label>
+      <label><input type="checkbox" value="Veg Fried Rice - 150" class="food">Veg Fried Rice - ₹150</label>
+      <label><input type="checkbox" value="Veg Biryani - 250" class="food">Veg Biryani - ₹250</label>
+      <label><input type="checkbox" value="Paneer Curry - 200" class="food">Paneer Curry - ₹200</label>
+      <label><input type="checkbox" value="Paneer Butter Masala - 200" class="food">Paneer Butter Masala - ₹200</label>
+      <label><input type="checkbox" value="Palak Paneer - 200" class="food">Palak Paneer - ₹200</label>
+    </div>
+
+    <!-- Ice Cream -->
+    <div class="item-group">
+      <label>🍦 Ice Cream</label>
+      <label><input type="checkbox" value="Vanilla - 90" class="icecream">Vanilla - ₹90</label>
+      <label><input type="checkbox" value="Chocolate - 100" class="icecream">Chocolate - ₹100</label>
+      <label><input type="checkbox" value="Strawberry - 120" class="icecream">Strawberry - ₹120</label>
+    </div>
+
+    <button type="button" onclick="calculateBill()">💰 Calculate & Proceed</button>
+    <div class="total" id="totalAmount">Total: ₹0</div>
+  </div>
+
+  <script>
+    function calculateBill() {
+      function getCheckedItems(className) {
+        const items = document.querySelectorAll(`.${className}:checked`);
+        return Array.from(items).map(item => item.value);
+      }
+
+      const cooldrinks = getCheckedItems("cooldrink");
+      const foods = getCheckedItems("food");
+      const icecreams = getCheckedItems("icecream");
+
+      let total = 0;
+      [...cooldrinks, ...foods, ...icecreams].forEach(item => {
+        const price = parseInt(item.split(" - ")[1]);
+        total += price;
+      });
+
+      // Save order to localStorage
+      const orderDetails = {
+        cooldrink: cooldrinks.join(", ") || "None",
+        food: foods.join(", ") || "None",
+        icecream: icecreams.join(", ") || "None",
+        total: total
+      };
+      localStorage.setItem("orderDetails", JSON.stringify(orderDetails));
+
+      document.getElementById("totalAmount").innerText = `Total: ₹${total}`;
+      // Go to feedback page
+window.location.href = "rating&feedback.html";
+
+// After 3 seconds, go to thank you page (only works if you keep the page open)
+setTimeout(() => {
+    window.location.href = "thank_you.html";
+}, 3000);
+
+
+      
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

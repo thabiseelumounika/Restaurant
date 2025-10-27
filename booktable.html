@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍽️ Book a Table</title>
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: #00ffcc;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #ff66cc;
+      text-shadow: 0 0 15px #ff66cc;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 0 20px #00ffcc;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 18px;
+      color: #00ffcc;
+    }
+
+    input, select {
+      padding: 10px;
+      width: 250px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ff66cc;
+    }
+
+    button, a {
+      background: #ff66cc;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #ff66cc;
+      margin: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    button:hover, a:hover {
+      background: #00ffcc;
+      color: #000;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍽️ Book Your Table</h1>
+
+  <!-- Booking Form -->
+  <form action="bill.html" method="GET">
+    <label for="name">👤 Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <label for="phone">📞 Phone</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+    <label for="people">👥 No. of People</label>
+    <input type="number" id="people" name="people" min="1" max="20" required>
+
+    <label for="date">📅 Date</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">⏰ Time</label>
+    <input type="time" id="time" name="time" required>
+
+    <select required name="ampm">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+
+    <br><br>
+    <button type="submit">✅ Confirm Booking</button>
+    <button type="rating and feedback.html" formaction="rating&Feedback.html">⭐ Go to Rating & Feedback</button>
+  </form>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="food.html">🍛 Food</a>
+    <a href="cooldrinks.html">🥤 Cooldrinks</a>
+    <a href="icecream.html">🍦 Icecream</a>
+    <a href="bill.html">🧾 Bill</a>
+    <a href="rating&Feedback.html">⭐ Rating & Feedback</a>
+    <a href="thankyou.html">🙏 Thank You</a>
+  </div>
+
+</body>
+</html>
